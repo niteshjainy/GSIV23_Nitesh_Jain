@@ -10,18 +10,19 @@ const MovieCard = ({ movie }) => {
         variant="top"
         className="movie-img-card"
         loading="lazy"
-        src={`${imageBaseUrl}${movie.poster_path}`}
+        src={`${imageBaseUrl}${movie?.poster_path}`}
       />
       <Card.Body>
         <div className="flex-align-center card-title">
-          <span>hiiiii</span>
-          <span>4.5</span>
+          <span>
+            {movie?.title.length > 20
+              ? movie?.title?.substring(0, 22) + "..."
+              : movie?.title}
+          </span>
+          <span>({movie?.vote_average}/10)</span>
         </div>
         <div className="flex-align-center card-description">
-          <span>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elitctetur
-            adipisicing elit.
-          </span>
+          <span>{movie?.overview?.substring(0, 70)}...</span>
         </div>
       </Card.Body>
     </Card>

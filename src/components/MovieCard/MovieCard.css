@@ -7,11 +7,15 @@
 .card-title {
   padding: 5px;
   font-size: 14px;
+  font-weight: 600;
 }
 
 .card-description {
   padding: 5px;
   font-size: 12px;
+  /* white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; */
 }
 
 /* overriding bootstrap css  */
