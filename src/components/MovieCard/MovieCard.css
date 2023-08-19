@@ -4,6 +4,12 @@
   border-radius: 12px !important;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
+
+.movie-img-card {
+  width: 230px;
+  height: 250px;
+}
+
 .card-title {
   padding: 5px;
   font-size: 14px;
@@ -13,9 +19,6 @@
 .card-description {
   padding: 5px;
   font-size: 12px;
-  /* white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis; */
 }
 
 /* overriding bootstrap css  */
@@ -24,7 +27,33 @@
   border-top-right-radius: inherit;
 }
 
-.movie-img-card {
-  width: 230px;
+/* css related to movie detail page  */
+.movie-desc-card {
+  width: 100%;
+  display: flex;
+}
+
+.movie-img-desc-card {
+  width: 180px;
   height: 250px;
+  margin-right: 10px;
+}
+
+.card-desc-description {
+  padding: 5px;
+  font-size: 16px;
+}
+
+.rating {
+  color: #9b9b9b;
+  margin-left: 10px;
+  font-size: 32px;
+}
+
+.title {
+  font-size: 32px;
+}
+
+.info {
+  margin-right: 5px;
 }

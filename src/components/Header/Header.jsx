@@ -1,10 +1,24 @@
 import React from "react";
 import "./Header.css";
-const Header = () => {
+import HomeLogo from "./../../assets/icons/home.svg";
+import BackLogo from "./../../assets/icons/arrow_back.svg";
+const Header = ({ isDescPage, setSelectedMovieData }) => {
   return (
     <header className="container-fluid ">
-      <input className="search" type="search" placeholder="Search" />
-      <span className="material-symbols-outlined">home</span>
+      {isDescPage ? (
+        <div className="flex-align-start">
+          <img
+            className="logo"
+            src={BackLogo}
+            alt="React Logo"
+            onClick={() => setSelectedMovieData(null)}
+          />
+          <span className="title">Movie Details</span>
+        </div>
+      ) : (
+        <input className="search" type="search" placeholder="Search" />
+      )}
+      <img className="logo" src={HomeLogo} alt="home Logo" />
     </header>
   );
 };
