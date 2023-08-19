@@ -1,24 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Header from "./components/Header";
+import MovieCard from "./components/MovieCard/MovieCard";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main className="container-fluid">
+      <Header />
+      <div className="movie-container">
+        {Array.from(Array(100), (_, index) => index + 1).map((e) => (
+          <MovieCard />
+        ))}
+      </div>
+    </main>
   );
 }
 
