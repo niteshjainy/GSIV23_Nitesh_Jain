@@ -1,14 +1,16 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
 import "./MovieCard.css";
+import { imageBaseUrl } from "../../api.config";
 
-const MovieCard = () => {
+const MovieCard = ({ movie }) => {
   return (
     <Card className="card movie-card">
       <Card.Img
         variant="top"
-        src="http://via.placeholder.com/230x200
-"
+        className="movie-img-card"
+        loading="lazy"
+        src={`${imageBaseUrl}${movie.poster_path}`}
       />
       <Card.Body>
         <div className="flex-align-center card-title">
