@@ -23,6 +23,7 @@ const MovieCard = ({ movie, setSelectedMovieData, detailView }) => {
         variant="top"
         className={`${detailView ? "movie-img-desc-card" : "movie-img-card"}`}
         loading="lazy"
+        alt={movieDescription?.title}
         src={`${imageBaseUrl}${movie?.poster_path}`}
       />
       {detailView ? (

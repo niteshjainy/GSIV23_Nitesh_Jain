@@ -6,8 +6,8 @@ import { useState } from "react";
 
 function App() {
   const [selectedMovieData, setSelectedMovieData] = useState(null);
-  const movieList = useSelector((state) => state.movie.movieList);
-
+  const { movieList, searchedMovieList } = useSelector((state) => state.movie);
+  const activeState = searchedMovieList?.length ? searchedMovieList : movieList;
   return (
     <main className="container-fluid">
       <Header
@@ -21,8 +21,8 @@ function App() {
             key={selectedMovieData.id}
             movie={selectedMovieData}
           />
-        ) : movieList?.length ? (
-          movieList.map((item) => (
+        ) : activeState?.length ? (
+          activeState.map((item) => (
             <MovieCard
               key={item.id}
               movie={item}
