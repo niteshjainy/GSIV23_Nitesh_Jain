@@ -5,7 +5,3 @@ export const filterMovieByDateDesc = (data, key) => {
     return date_b - date_a;
   });
 };
-
-export const filterForUpcomingMovie = (data, key) => {
-  return data.filter((item) => new Date(item[key]) > new Date());
-};
