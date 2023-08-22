@@ -48,6 +48,10 @@ export const movieSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
+    // cases for fetch movie
+    builder.addCase(fetchMovies.pending, (state, action) => {
+      state.isLoading = true;
+    });
     builder.addCase(fetchMovies.fulfilled, (state, action) => {
       if (action.payload.length === 0) state.hasMore = false;
       else {
@@ -55,12 +59,25 @@ export const movieSlice = createSlice({
         state.pageNumber = state.pageNumber + 1;
         state.movieList = [...state.movieList, ...action.payload];
       }
+      state.isLoading = false;
+    });
+
+    // cases for fetch movie by id (movie details)
+    builder.addCase(fetchMovieById.pending, (state, action) => {
+      state.isLoading = true;
     });
     builder.addCase(fetchMovieById.fulfilled, (state, action) => {
       state.movieDescription = action.payload;
+      state.isLoading = false;
+    });
+
+    // cases for search movie
+    builder.addCase(searchMovie.pending, (state, action) => {
+      state.isLoading = true;
     });
     builder.addCase(searchMovie.fulfilled, (state, action) => {
       state.searchedMovieList = action.payload;
+      state.isLoading = false;
     });
   },
 });
