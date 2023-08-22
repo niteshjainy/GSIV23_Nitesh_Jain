@@ -19,52 +19,32 @@ You may also see any lint errors in the console.
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+### `npm install`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+First time, you will need to install all related packages for making app working
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## List page -> I have created home.js as a list page where I have used two components
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Header -> This is common Header component which I created using html/css/bootstrap.
+In design we have two different header, which I handled simply using states.
+This is resuable component. We can further modify it as per needed.
 
-### `npm run eject`
+Bootstrap => Bootstrap classes I have used to making UI responsive, This is best responsive library available for creating small small responsive component or we can directly use there basic components in our code.
+Bootstrap library is not very heavy library so bundle size will be small.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Card (Details page, movie card ) -> I have used bootstrap card for displaying responsive movie card.
+Which have simple html tags and few bootstrap classes.
+This card is purely reusable, responsive and I have not created seprated card for movie detail, same
+card I have utilize for detial page using states.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+List Page scrolling (IntersectionObserver Api)-> For implementing infinite scrolling I have used "IntersectionObserver", This is a modern concept for handling infinite scrolling. I have not used react-scroll library, for removing extra dependency and sometime libraries are not updated which create bondation in React version update.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Search Movie (Debounce)-> For searching movie I have implemeted search api with html standard input element.
+This functionality is implemeted inside Header.js
+I have also used debouncing for reducing extra api call when user is typing continuously
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+State Management (Redux-toolkit) -> this library I have used for managing central state as well as for handling asyn task I have used createAsyncThunk, which beautiful handle our api call amd save states.
 
-## Learn More
+Loader -> One common loader I have used for handling all pending states.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Null check -> I tried to use null check so will not get page breaking error(in case of no data)
