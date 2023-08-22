@@ -4,13 +4,17 @@ import Header from "./components/Header";
 import MovieCard from "./components/MovieCard/MovieCard";
 import { useEffect, useRef, useState } from "react";
 import { fetchMovies } from "./app/features/movie/movieSlice";
+import Loader from "./components/Loader";
 
 function App() {
   const dispatch = useDispatch();
   const elementRef = useRef(null);
-  const { movieList, searchedMovieList, hasMore } = useSelector(
-    (state) => state.movie
-  );
+  const {
+    movieList,
+    searchedMovieList,
+    hasMore,
+    isLoading = true,
+  } = useSelector((state) => state.movie);
   const [selectedMovieData, setSelectedMovieData] = useState(null);
   // this state is representing current state either filter or normal
   const activeState = searchedMovieList?.length ? searchedMovieList : movieList;
@@ -60,6 +64,7 @@ function App() {
         ) : null}
         {hasMore && <div ref={elementRef}></div>}
       </div>
+      {isLoading && <Loader />}
     </main>
   );
 }

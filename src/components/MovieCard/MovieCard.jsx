@@ -52,7 +52,7 @@ const MovieCard = ({ movie, setSelectedMovieData, detailView }) => {
         </Card.Body>
       ) : (
         <Card.Body>
-          <div className="flex-align-center card-title">
+          <div className="flex-align-between card-title">
             <span>
               {movie?.title.length > 20
                 ? movie?.title?.substring(0, 22) + "..."
@@ -60,7 +60,7 @@ const MovieCard = ({ movie, setSelectedMovieData, detailView }) => {
             </span>
             <span>({movie?.vote_average}/10)</span>
           </div>
-          <div className="flex-align-center card-description">
+          <div className="flex-align-between card-description">
             <span>{movie?.overview?.substring(0, 70)}...</span>
           </div>
         </Card.Body>

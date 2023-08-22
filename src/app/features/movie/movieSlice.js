@@ -9,6 +9,7 @@ const initialState = {
   movieDescription: {},
   hasMore: true,
   pageNumber: 1,
+  isLoading: true,
 };
 
 export const fetchMovies = createAsyncThunk(
