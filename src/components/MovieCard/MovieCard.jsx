@@ -30,14 +30,20 @@ const MovieCard = ({
         className={`${detailView ? "movie-img-desc-card" : "movie-img-card"}`}
         loading="lazy"
         alt={movieDescription?.title}
-        src={`${imageBaseUrl}${movie?.poster_path}`}
+        src={`${
+          movie?.poster_path
+            ? imageBaseUrl + "" + movie?.poster_path
+            : "http://via.placeholder.com/230x250"
+        }`}
       />
       {detailView ? (
         <Card.Body>
           <div className="flex-align-start card-title">
             <span className="title">{movieDescription?.title}</span>
             <span className="rating">
-              ({movieDescription?.vote_average}/10)
+              {movieDescription?.vote_average
+                ? movieDescription?.vote_average + "/10"
+                : "(Rating not available)"}
             </span>
           </div>
           <div className="flex-align-start card-title">
@@ -64,10 +70,14 @@ const MovieCard = ({
                 ? movie?.title?.substring(0, 22) + "..."
                 : movie?.title}
             </span>
-            <span>({movie?.vote_average}/10)</span>
+            <span>({movie?.vote_average ? movie?.vote_average : "NA"}/10)</span>
           </div>
           <div className="flex-align-between card-description">
-            <span>{movie?.overview?.substring(0, 70)}...</span>
+            <span>
+              {movie?.overview
+                ? movie?.overview?.substring(0, 70) + "..."
+                : "No Data Available"}
+            </span>
           </div>
         </Card.Body>
       )}

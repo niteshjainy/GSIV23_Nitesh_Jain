@@ -38,7 +38,12 @@ const Header = ({ isDescPage, setSelectedMovieData }) => {
           onEmptied={() => dispatch(clearSearchMovieList())}
         />
       )}
-      <img className="logo" src={HomeLogo} alt="home Logo" />
+      <img
+        className="logo"
+        src={HomeLogo}
+        alt="home Logo"
+        onClick={() => setSelectedMovieData(null)}
+      />
     </header>
   );
 };
