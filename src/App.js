@@ -40,6 +40,20 @@ function App() {
     };
   }, [elementRef]);
 
+  // storing scroll position
+  function saveScrollPos() {
+    const scrollPos = { x: window.scrollX, y: window.scrollY };
+    sessionStorage.setItem("homePageScroll", JSON.stringify(scrollPos));
+  }
+
+  // scrolling back when closing detail page
+  useEffect(() => {
+    const scrollPos = JSON.parse(sessionStorage.getItem("homePageScroll"));
+    if (scrollPos) {
+      window.scrollTo(scrollPos.x, scrollPos.y);
+    }
+  }, [selectedMovieData]);
+
   return (
     <main className="container-fluid">
       <Header
@@ -59,6 +73,7 @@ function App() {
               key={item.id}
               movie={item}
               setSelectedMovieData={setSelectedMovieData}
+              saveScrollPos={saveScrollPos}
             />
           ))
         ) : null}

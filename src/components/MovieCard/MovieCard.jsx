@@ -5,7 +5,12 @@ import { imageBaseUrl } from "../../api.config";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchMovieById } from "../../app/features/movie/movieSlice";
 
-const MovieCard = ({ movie, setSelectedMovieData, detailView }) => {
+const MovieCard = ({
+  movie,
+  setSelectedMovieData,
+  detailView,
+  saveScrollPos,
+}) => {
   const dispatch = useDispatch();
   const movieDescription = useSelector((state) => state.movie.movieDescription);
 
@@ -14,6 +19,7 @@ const MovieCard = ({ movie, setSelectedMovieData, detailView }) => {
       className={`card ${detailView ? "movie-desc-card" : "movie-card"}`}
       onClick={() => {
         if (!detailView) {
+          saveScrollPos();
           setSelectedMovieData(movie);
           dispatch(fetchMovieById({ id: movie?.id }));
         }
