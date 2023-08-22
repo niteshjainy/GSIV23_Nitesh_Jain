@@ -8,9 +8,6 @@ import { store } from "./app/store";
 import { fetchMovies } from "./app/features/movie/movieSlice";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-// calling fetch movie api before app loading for getting early access of movie list
-store.dispatch(fetchMovies());
-
 root.render(
   <React.StrictMode>
     <Provider store={store}>

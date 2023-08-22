@@ -13,11 +13,16 @@ const initialState = {
   movieDescription: {},
 };
 
-export const fetchMovies = createAsyncThunk("movie/fetchMovies", async () => {
-  const response = await api.get(`${fetchUpcomingMovieUrl}?${query}`);
+export const fetchMovies = createAsyncThunk(
+  "movie/fetchMovies",
+  async (pageNumber) => {
+    const response = await api.get(
+      `${fetchUpcomingMovieUrl}?page=${pageNumber}&${query}`
+    );
 
-  return filterMovieByDateDesc(response.data.results, "release_date");
-});
+    return filterMovieByDateDesc(response.data.results, "release_date");
+  }
+);
 
 export const fetchMovieById = createAsyncThunk(
   "movie/fetchMovieById",
