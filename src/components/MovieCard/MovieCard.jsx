@@ -13,7 +13,9 @@ const MovieCard = ({
 }) => {
   const dispatch = useDispatch();
   const movieDescription = useSelector((state) => state.movie.movieDescription);
-
+  const CastingDetails = movieDescription?.credits?.cast.filter(
+    (e) => e.known_for_department === "Acting"
+  );
   return (
     <Card
       className={`card ${detailView ? "movie-desc-card" : "movie-card"}`}
@@ -56,7 +58,24 @@ const MovieCard = ({
                 .toString()
                 .padStart(2, "0") + " |"}
             </span>
-            <span className="info">{movieDescription?.title}</span>
+            <span className="info">
+              {
+                movieDescription?.credits?.crew.filter(
+                  (e) => e.job === "Director"
+                )[0].original_name
+              }
+            </span>
+          </div>
+          <div className="flex-align-start cast-detail">
+            <span className="info">
+              <b>Cast:</b>
+            </span>
+            {CastingDetails?.map((e, i) => (
+              <span className="info">
+                {e.original_name}
+                {CastingDetails?.length === i + 1 ? "" : ", "}
+              </span>
+            ))}
           </div>
           <div className="card-desc-description">
             <span>{movieDescription?.overview}</span>

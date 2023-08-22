@@ -26,7 +26,9 @@ export const fetchMovies = createAsyncThunk(
 export const fetchMovieById = createAsyncThunk(
   "movie/fetchMovieById",
   async ({ id }) => {
-    const response = await api.get(`movie/${id}?${query}`);
+    const response = await api.get(
+      `movie/${id}?${query}&append_to_response=credits`
+    );
     return response.data;
   }
 );

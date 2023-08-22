@@ -16,6 +16,13 @@
   font-weight: 600;
 }
 
+.cast-detail {
+  padding: 5px;
+  font-size: 14px;
+  font-weight: 400;
+  flex-wrap: wrap;
+}
+
 .card-description {
   padding: 5px;
   font-size: 12px;
