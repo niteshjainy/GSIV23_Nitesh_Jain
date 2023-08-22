@@ -1,25 +1,23 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import api from "../../../api";
-import {
-  fetchMovieByIdUrl,
-  fetchUpcomingMovieUrl,
-  query,
-} from "../../../api.config";
+import { fetchUpcomingMovieUrl, query } from "../../../api.config";
 import { filterMovieByDateDesc } from "../../../utills/globalFunction";
 
 const initialState = {
   movieList: [],
   searchedMovieList: [],
   movieDescription: {},
+  hasMore: true,
+  pageNumber: 1,
 };
 
 export const fetchMovies = createAsyncThunk(
   "movie/fetchMovies",
-  async (pageNumber) => {
+  async (arg, { getState }) => {
+    const currentState = getState();
     const response = await api.get(
-      `${fetchUpcomingMovieUrl}?page=${pageNumber}&${query}`
+      `${fetchUpcomingMovieUrl}?page=${currentState.movie.pageNumber}&${query}`
     );
-
     return filterMovieByDateDesc(response.data.results, "release_date");
   }
 );
@@ -50,7 +48,12 @@ export const movieSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(fetchMovies.fulfilled, (state, action) => {
-      state.movieList = action.payload;
+      if (action.payload.length === 0) state.hasMore = false;
+      else {
+        state.hasMore = true;
+        state.pageNumber = state.pageNumber + 1;
+        state.movieList = [...state.movieList, ...action.payload];
+      }
     });
     builder.addCase(fetchMovieById.fulfilled, (state, action) => {
       state.movieDescription = action.payload;

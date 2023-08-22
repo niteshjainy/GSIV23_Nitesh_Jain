@@ -5,7 +5,6 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 import { store } from "./app/store";
-import { fetchMovies } from "./app/features/movie/movieSlice";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
