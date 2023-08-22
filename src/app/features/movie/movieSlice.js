@@ -5,6 +5,7 @@ import {
   fetchUpcomingMovieUrl,
   query,
 } from "../../../api.config";
+import { filterMovieByDateDesc } from "../../../utills/globalFunction";
 
 const initialState = {
   movieList: [],
@@ -14,7 +15,8 @@ const initialState = {
 
 export const fetchMovies = createAsyncThunk("movie/fetchMovies", async () => {
   const response = await api.get(`${fetchUpcomingMovieUrl}?${query}`);
-  return response.data.results;
+
+  return filterMovieByDateDesc(response.data.results, "release_date");
 });
 
 export const fetchMovieById = createAsyncThunk(

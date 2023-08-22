@@ -3,11 +3,14 @@ import "./App.css";
 import Header from "./components/Header";
 import MovieCard from "./components/MovieCard/MovieCard";
 import { useState } from "react";
+import { filterForUpcomingMovie } from "./utills/globalFunction";
 
 function App() {
   const [selectedMovieData, setSelectedMovieData] = useState(null);
   const { movieList, searchedMovieList } = useSelector((state) => state.movie);
-  const activeState = searchedMovieList?.length ? searchedMovieList : movieList;
+  const activeState = searchedMovieList?.length
+    ? searchedMovieList
+    : filterForUpcomingMovie(movieList, "release_date");
   return (
     <main className="container-fluid">
       <Header
